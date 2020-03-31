@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <%- include('includes/menu'); -%>
+
+    <main>
+        <h2>Register</h2>
+        <div class="wrapperCreate">
+          <form id="createUser" action="/users/register" method="POST">
+            <label>First Name:</label>
+            <input type="text" name="firstName">
+            <label>Last Name:</label>
+            <input type="text" name="lastName">
+            <label>Email:</label>
+            <input type="text" name="email">
+            <label>Password:</label>
+            <input type="password" name="password">
+            <label>Password repeat:</label>
+            <input type="password" name="passwordrepeat">
+            <input type="submit" value="Register User">
+          </form>
+        </div>
+    </main>
+  </body>
+</html>

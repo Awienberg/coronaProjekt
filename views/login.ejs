@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <%- include('includes/menu'); -%>
+
+    <main>
+        <h2>Login</h2>
+        <div class="wrapperCreate">
+          <form id="createUser" action="/users/login" method="POST">
+            <label>Email:</label>
+            <input type="text" name="email">
+            <label>Password:</label>
+            <input type="password" name="password">
+            <input type="submit" value="Login">
+          </form>
+        </div>
+    </main>
+  </body>
+</html>
