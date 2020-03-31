@@ -6,6 +6,16 @@ const saltTurns = 10;
 const dbServer = "localhost";
 const dbname = "worldusers";
 
+//mangler getUsers function
+exports.getUsers = async function (query, sort) {
+    try {
+        let cs = await mon.retrieve(dbServer, dbname, User, query, sort);
+        return cs;
+    } catch (e) {
+        console.error(e);
+    }
+};
+
 exports.upsertUser = async function (req) {
     let check = { email: req.body.email };
     let user = new User({
