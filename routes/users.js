@@ -25,10 +25,10 @@ router.get('/login', function(req, res) {     // display register route
 router.post('/login', async function(req, res) {  // new user post route
   let rc = await userHandler.verifyUser(req);     // verify credentials
   if (rc) {
-      res.render('index', {                   // find the view 'index'
-          title: 'Corona Projekt',          // input data to 'index'
+      res.render('toDos', {                   // find the view 'index'
+          title: 'Your Todos',          // input data to 'index'
           loggedin: true,
-          who: req.session.user               // using session var(s)
+          who: req.session.user              // using session var(s)
       });
   } else {
       res.render('login', {                   // find the view 'login'
@@ -40,7 +40,7 @@ router.post('/login', async function(req, res) {  // new user post route
 //To Dos
 router.get('/toDos', function(req, res) {  // display register route
   res.render('toDos', {                    // display register form view
-      title: 'To Dos'                  // input data to view
+      title: 'Your Todos'                  // input data to view
   });
 });
 //Admin

@@ -9,7 +9,7 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    email: {
+    userID: {
         type: String,
         required: true,
         unique: true
@@ -30,11 +30,11 @@ userSchema.methods.getFullName = function () {
 }
 
 userSchema.methods.getInfo = function () {
-    return `${this.getFullName()}, Email: ${this.email}, Zipcode: ${this.zipcode}`;
+    return `${this.getFullName()}, userID: ${this.userID}, Zipcode: ${this.zipcode}`;
 }
 
 userSchema.methods.getCredentials = function () {
-    return `${this.email}\t${this.password}`;
+    return `${this.userID}\t${this.password}`;
 }
 
 module.exports = mongoose.model("User", userSchema, 'user');
