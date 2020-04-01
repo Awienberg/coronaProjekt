@@ -14,15 +14,21 @@
             </div>
             <h2>Create Todo</h2>
             <div class="wrapperCreate"></div>
+            <div class="container">
+              <div class="left">
+                <h2> A Simple ToDo List App </h2>
+                <form action ="/users/login" method="POST">
+                  <input type="text" name="newtask" placeholder="add new task">        <button> Add Task </button>
+                  <h2> Added Task </h2>
+                  <% for( var i = 0; i < task.length; i++){ %>
+                    <li><input type="checkbox" name="check" value="<%= task[i] %>" /> <%= task[i] %> </li>
+                  <% } %>
+                </div>
+
+                <div class="right">
+
+                  </div>
+                </div>
         </main>
     </body>
-    <div class="container">
-        <h2> A Simple ToDo List App </h2>
-        <form action ="/users/login" method="POST">
-               <input type="text" name="newtask" placeholder="add new task">        <button> Add Task </button>
-        <h2> Added Task </h2>
-       <% for( var i = 0; i < task.length; i++){ %>
-    <li><input type="checkbox" name="check" value="<%= task[i] %>" /> <%= task[i] %> </li>
-    <% } %>
-        </div>
 </html>

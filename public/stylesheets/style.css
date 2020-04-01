@@ -51,10 +51,24 @@ li a {
 main {
     padding: 50px;
 }
+
+.left {
+    float: left;
+    margin: 0 auto;
+    width: 50%;
+}
+
+.right {
+      float: right;
+      margin: 0 auto;
+      width: 50%;
+}
+
+
 h1 {
     font-size: 30px;
     color: #202020;
-    padding: 14px 16px; 
+    padding: 14px 16px;
 
 }
 h2 {
@@ -141,4 +155,3 @@ input[type='submit'] {
     float: left;
 
 }
-
