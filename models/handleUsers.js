@@ -6,12 +6,11 @@ const saltTurns = 10;
 const dbServer = 'localhost';
 const dbname = 'todousers';
 
-exports.getUsers = async function(err, query, sort) {
+exports.getUsers = async function(query, sort) {
     try {
         let cs = await mon.retrieve(dbServer, dbname, User, query, sort);
         return cs;
     } catch (e) {
-        next(err);
         console.error(e);
     }
 };
