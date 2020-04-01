@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <%- include('includes/adminscript'); -%>
+    <head>
+        <title><%= title %></title>
+        <%- include('includes/adminscript'); -%>
 
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <%- include('includes/menu'); -%>
+        <link rel="stylesheet" href="/stylesheets/style.css" />
+    </head>
+    <body>
+        <%- include('includes/menu'); -%>
 
-    <main>
-        <h2>Admin stuff here</h2>
-        <div id="users"></div>
-    </main>
-
-  </body>
+        <main>
+            <h2><%= message %> <%= who %></h2>
+            <div id="users"></div>
+        </main>
+    </body>
 </html>

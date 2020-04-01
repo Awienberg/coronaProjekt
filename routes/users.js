@@ -36,6 +36,7 @@ router.post('/login', async function(req, res) {
             // find the view 'index'
             title: 'Your Todos', // input data to 'index'
             loggedin: true,
+            message: 'Logged in as',
             who: req.session.user // using session var(s)
         });
     } else {
@@ -56,17 +57,28 @@ router.get('/toDos', function(req, res) {
     });
 });
 //Admin
-router.get('/admin', function(req, res) {
-    // display register route
-    res.render('admin', {
-        // display register form view
-        title: 'Admin' // input data to view
-    });
+router.get('/admin', async function(req, res) {
+    let rc = await userHandler.getUsers(req); // verify credentials
+    if (rc) {
+        res.render('admin', {
+            // find the view 'index'
+            title: 'Admin Panel', // input data to 'index'
+            loggedin: true,
+            message: 'Logged in as Admin',
+            who: req.session.user // using session var(s)
+        });
+    } else {
+        res.render('login', {
+            // find the view 'login'
+            title: 'User Login', // input data to 'login'
+            message: 'The username or password is incorrect. Try again',
+            loggedin: false
+        });
+    }
 });
-router.get('/admin/:user',  async function(req, res) {
-    let user = await userHandler.getUsers({}, {sort: {name: 1}});
+router.get('/admin/:user', async function(req, res) {
+    let user = await userHandler.getUsers({}, { sort: { name: 1 } });
     res.json(user);
 });
-
 
 module.exports = router;
