@@ -43,7 +43,7 @@ router.post('/login', async function(req, res) {
         });
     }
 });
-
+//Userpanel
 router.get('/userpanel', async function(req, res) {
     // display register route
     res.render('userpanel', {
@@ -54,29 +54,6 @@ router.get('/userpanel', async function(req, res) {
         who: req.session.user // using session var(s)
     });
 });
-
-// //Login
-// router.get('/userpanel', async function(req, res) {
-//     // display register route
-//     let rc = await userHandler.getUsers(req); // verify credentials
-//     if (rc) {
-//         res.render('userpanel', {
-//             // find the view 'userpanel'
-//             title: 'Userpanel', // input data to 'userpanel'
-//             loggedin: true,
-//             message: 'Welcomome to your userpanel',
-//             who: req.session.user // using session var(s)
-//         });
-//     } else {
-//         res.render('login', {
-//             // find the view 'login'
-//             title: 'User Login', // input data to 'login'
-//             message: 'The username or password is incorrect. Try again',
-//             loggedin: false
-//         });
-//     }
-// });
-
 //To Dos
 router.get('/toDos', function(req, res) {
     // display register route
@@ -93,24 +70,16 @@ router.post('/toDos/:todo', async function(req, res) {
 });
 //Admin
 router.get('/admin', async function(req, res) {
-    let rc = await userHandler.getUsers(req); // verify credentials
-    if (rc) {
-        res.render('admin', {
-            // find the view 'index'
-            title: 'Admin Panel', // input data to 'index'
-            loggedin: true,
-            message: 'Logged in as Admin',
-            who: req.session.user // using session var(s)
-        });
-    } else {
-        res.render('login', {
-            // find the view 'login'
-            title: 'User Login', // input data to 'login'
-            message: 'The username or password is incorrect. Try again',
-            loggedin: false
-        });
-    }
+    // display register route
+    res.render('admin', {
+        // find the view 'userpanel'
+        title: 'Admin Panel', // input data to 'userpanel'
+        loggedin: true,
+        message: 'Welcome to Admin Panel',
+        who: req.session.user // using session var(s)
+    });
 });
+
 router.get('/admin/:user', async function(req, res) {
     let user = await userHandler.getUsers({}, { sort: { name: 1 } });
     res.json(user);
