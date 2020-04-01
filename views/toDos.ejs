@@ -16,4 +16,13 @@
             <div class="wrapperCreate"></div>
         </main>
     </body>
+    <div class="container">
+        <h2> A Simple ToDo List App </h2>
+        <form action ="/users/login" method="POST">
+               <input type="text" name="newtask" placeholder="add new task">        <button> Add Task </button>
+        <h2> Added Task </h2>
+       <% for( var i = 0; i < task.length; i++){ %>
+    <li><input type="checkbox" name="check" value="<%= task[i] %>" /> <%= task[i] %> </li>
+    <% } %>
+        </div>
 </html>
