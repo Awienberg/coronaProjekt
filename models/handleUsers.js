@@ -1,7 +1,5 @@
 "use strict";
 const mon = require("./mongooseWrap");
-//const mongoose = require('mongoose')                      //DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead.
-//mongoose.set('useCreateIndex', true);
 const bcrypt = require('bcryptjs');                         // added for hashing
 const User = require("./User");
 const saltTurns = 10;
@@ -31,6 +29,16 @@ exports.upsertUser = async function (req) {
         console.error(e);
     }
 };
+
+exports.deleteUser = async function (name) {
+    try {
+        let cs = await mon.remove(dbServer, dbname, User, name);
+        return cs;
+    } catch (e) {
+        console.log(e);
+    }
+}
+
 
 exports.verifyUser = async function (req) {
     let check = { userID: req.body.userID };

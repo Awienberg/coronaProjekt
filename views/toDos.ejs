@@ -5,14 +5,17 @@
         <link rel="stylesheet" href="/stylesheets/style.css" />
     </head>
     <body>
-        <%- include('includes/menu'); -%>
+        <%- include('includes/loggedin'); -%>
 
         <main>
-            <p><%= message %> <%= who %></p>
-            <input id="logout" type="submit" value="Logout" />
-
+            <p>Logged in as <%= who %></p>
+            <div class="wrapperCreate">
+                <a href="/">Logout</a>
+            </div>
             <h2>Create Todo</h2>
-            <div class="wrapperCreate"></div>
+            <div class="wrapperCreate">
+                
+            </div>
         </main>
     </body>
 </html>

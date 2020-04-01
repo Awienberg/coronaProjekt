@@ -36,7 +36,6 @@ router.post('/login', async function(req, res) {
             // find the view 'index'
             title: 'Your Todos', // input data to 'index'
             loggedin: true,
-            message: 'Logged in as',
             who: req.session.user // using session var(s)
         });
     } else {
@@ -64,5 +63,10 @@ router.get('/admin', function(req, res) {
         title: 'Admin' // input data to view
     });
 });
+router.get('/admin/:user',  async function(req, res) {
+    let user = await userHandler.getUsers({}, {sort: {name: 1}});
+    res.json(user);
+});
+
 
 module.exports = router;
