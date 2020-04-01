@@ -1,10 +1,6 @@
 const mongoose = require("mongoose");
 
 const toDosSchema = mongoose.Schema({
-    userID: {
-        type: String,
-        required: true
-    },
     title: {
         type: String,
         required: true
