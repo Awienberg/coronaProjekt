@@ -13,22 +13,24 @@
                 <a href="/">Logout</a>
             </div>
             <h2>Create Todo</h2>
-            <div class="wrapperCreate"></div>
-            <div class="container">
-              <div class="left">
-                <h2> A Simple ToDo List App </h2>
-                <form action ="/users/login" method="POST">
-                  <input type="text" name="newtask" placeholder="add new task">        <button> Add Task </button>
-                  <h2> Added Task </h2>
-                  <% for( var i = 0; i < task.length; i++){ %>
-                    <li><input type="checkbox" name="check" value="<%= task[i] %>" /> <%= task[i] %> </li>
-                  <% } %>
-                </div>
+            <div class="wrapperCreate">
+                <form id="createTodo" action="/users/toDos" method="POST">
+                  <label>Title:</label>
+                  <input type="text" name="title">
+                  <label>Todo:</label>
+                  <input type="text" name="todo">
+                  <label>Created:</label>
+                  <input type="date" name="created">
+                  <label>Deadline:</label>
+                  <input type="text" name="deadline">
+                  <input type="submit" value="Add your Todo">
+                </form>        
+            </div>
 
-                <div class="right">
-
-                  </div>
-                </div>
+            <div class="wrapperCreate">
+                <h2>Added Todo</h2>
+            </div>
+              
         </main>
     </body>
 </html>

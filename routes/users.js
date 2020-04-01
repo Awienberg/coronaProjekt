@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const userHandler = require("../models/handleUsers");
+const toDoHandler = require("../models/handleToDos");
 
 /* GET users listing. */
 router.get("/", function(req, res, next) {
@@ -38,7 +39,6 @@ router.post("/login", async function(req, res) {
       loggedin: true,
       message: "Logged in as",
       who: req.session.user, // using session var(s)
-      task: task
     });
   } else {
     res.render("login", {
@@ -57,17 +57,25 @@ router.get("/toDos", function(req, res) {
     title: "Your Todos" // input data to view
   });
 });
-
-var task = ["buy socks", "practise with nodejs"];
-
-//post route for adding new task
-router.post("/login", function(req, res) {
-  var newTask = req.body.newtask;
-  //add the new task from the post route
-  task.push(newTask);
-  res.redirect("/");
+router.post("/toDos", async function(req, res) {
+  // new user post route
+  let rc = await toDoHandler.upsertToDos(req); // verify credentials
+  if (rc) {
+    res.render("toDos", {
+      // find the view 'index'
+      title: "Your Todos", // input data to 'index'
+      loggedin: true,
+      message: "Logged in as",
+      who: req.session.user, // using session var(s)
+    });
+  } else {
+    res.render("login", {
+      // find the view 'login'
+      title: "User Login", // input data to 'login'
+      loggedin: false
+    });
+  }
 });
-
 //Admin
 router.get("/admin", async function(req, res) {
   let rc = await userHandler.getUsers(req); // verify credentials
