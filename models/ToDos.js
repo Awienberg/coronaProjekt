@@ -14,9 +14,9 @@ const toDosSchema = mongoose.Schema({
         default: Date.now
     },
     deadline: {
-        type: String,
+        type: Date,
         required: true
     }
 });
 
-module.exports = mongoose.model("ToDo", toDosSchema, 'todos');
+module.exports = mongoose.model("ToDo", toDosSchema, 'todo');

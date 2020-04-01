@@ -15,14 +15,14 @@ exports.getToDos = async function (query, sort) {
 
 exports.upsertToDos = async function (req) {
     let check = { title: req.body.title };
-    let todos = new ToDos({
+    let todo = new ToDos({
         title: req.body.title,
         todo: req.body.todo,
         created: req.body.created,
         deadline: req.body.deadline,
     });
     try {
-        let cs = await mon.upsert(dbServer, dbname, ToDos, todos, check);
+        let cs = await mon.upsert(dbServer, dbname, ToDos, todo, check);
     } catch(e) {
         console.error(e);
     }

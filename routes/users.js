@@ -57,24 +57,11 @@ router.get("/toDos", function(req, res) {
     title: "Your Todos" // input data to view
   });
 });
-router.post("/toDos", async function(req, res) {
+router.post("/toDos/:todo", async function(req, res) {
   // new user post route
   let rc = await toDoHandler.upsertToDos(req); // verify credentials
-  if (rc) {
-    res.render("toDos", {
-      // find the view 'index'
-      title: "Your Todos", // input data to 'index'
-      loggedin: true,
-      message: "Logged in as",
-      who: req.session.user, // using session var(s)
-    });
-  } else {
-    res.render("login", {
-      // find the view 'login'
-      title: "User Login", // input data to 'login'
-      loggedin: false
-    });
-  }
+  console.log(rc);
+  return res.redirect('/users/toDos')
 });
 //Admin
 router.get("/admin", async function(req, res) {
