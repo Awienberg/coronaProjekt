@@ -121,6 +121,13 @@ table {
     width: 50%;
     padding-bottom: 20px;
 }
+.userpanel {
+    padding-bottom: 20px;
+}
+.userpanel a {
+    padding-right: 10px;
+    padding-bottom: 20px;
+}
 label {
     /* Other styling... */
     font-weight: 600;

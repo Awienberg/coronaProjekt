@@ -9,16 +9,18 @@
     <%- include('includes/loggedin'); -%>
 
     <main>
-      <div class="wrapperCreate">
+      <div class="userpanel">
+        <a href="userpanel">Userpanel</a>
         <a href="/">Logout</a>
       </div>
+
       <h2>Create Todo</h2>
       <div class="wrapperCreate">
         <form id="createTodo" action="/users/toDos/" method="POST">
           <label>Title:</label>
           <input type="text" name="title" />
           <label>Todo:</label>
-          <textarea type="text" name="todo"></textarea>
+          <textarea type="text" name="todo" rows="4" cols="50"></textarea>
           <label>Created:</label>
           <input type="date" name="created" />
           <label>Deadline:</label>
