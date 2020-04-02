@@ -19,7 +19,6 @@ const toDosSchema = mongoose.Schema({
     },
     isdone: {
         type: Boolean,
-        format: hidden,
         default: false
     }
 });
