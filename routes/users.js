@@ -68,6 +68,10 @@ router.post("/toDos", async function(req, res) {
   let rc = await toDoHandler.upsertToDos(req); // verify credentials
   return res.redirect("/users/toDos");
 });
+router.get("/toDos/:todo", async function(req, res) {
+  let todos = await toDoHandler.getToDos({}, { sort: { name: 1 } });
+  res.json(todos);
+});
 //Admin
 router.get("/admin", async function(req, res) {
   // display register route
@@ -93,11 +97,6 @@ router.post("/admin/:user", async function(req, res, next) {
     who: req.session.slet,
     delUser
   });
-});
-
-router.get("/toDos/:todo", async function(req, res) {
-  let dos = await toDoHandler.getToDos({}, { sort: { name: 1 } });
-  res.json(dos);
 });
 
 module.exports = router;

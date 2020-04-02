@@ -19,29 +19,24 @@ const showToDo = function(e) {
   let tabel = document.createElement("table");
   let tr = document.createElement("tr");
   let th = document.createElement("th");
-  let p = document.createTextNode("Task");
+  let p = document.createTextNode("Title");
   th.appendChild(p);
   tr.appendChild(th);
 
   let th1 = document.createElement("th");
-  let p1 = document.createTextNode("Title");
+  let p1 = document.createTextNode("todo");
   th1.appendChild(p1);
   tr.appendChild(th1);
 
   let th2 = document.createElement("th");
-  let p2 = document.createTextNode("Todo");
+  let p2 = document.createTextNode("Created");
   th2.appendChild(p2);
   tr.appendChild(th2);
 
   let th3 = document.createElement("th");
-  let p3 = document.createTextNode("created");
+  let p3 = document.createTextNode("Deadline");
   th3.appendChild(p3);
   tr.appendChild(th3);
-
-  let th4 = document.createElement("th");
-  let p4 = document.createTextNode("deadline");
-  th4.appendChild(p4);
-  tr.appendChild(th4);
 
   tabel.appendChild(tr);
 
@@ -54,13 +49,13 @@ const showToDo = function(e) {
     tr1.appendChild(td1);
 
     let td2 = document.createElement("td");
-    let fn = document.createTextNode(todo.todo);
-    td2.appendChild(fn);
+    let td = document.createTextNode(todo.todo);
+    td2.appendChild(td);
     tr1.appendChild(td2);
 
     let td3 = document.createElement("td");
-    let ln = document.createTextNode(todo.created);
-    td3.appendChild(ln);
+    let cr = document.createTextNode(todo.created);
+    td3.appendChild(cr);
     tr1.appendChild(td3);
 
     let td4 = document.createElement("td");
