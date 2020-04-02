@@ -62,6 +62,67 @@ const showToDo = function(e) {
     let deadline = document.createTextNode(todo.deadline);
     td4.appendChild(deadline);
     tr1.appendChild(td4);
+
+    //delete
+    let td5 = document.createElement("td");
+    let form = document.createElement("form");
+    form.setAttribute("method", "POST");
+    form.setAttribute("action", "/users/toDos/:todo");
+
+    let input = document.createElement("input");
+    input.setAttribute("value", todo.title);
+    input.setAttribute("name", "slet");
+    input.setAttribute("type", "hidden");
+
+    let delB = document.createElement("button");
+    let deltext = document.createTextNode("Delete");
+    delB.setAttribute("class", "del");
+    form.appendChild(input);
+    form.appendChild(delB);
+    delB.appendChild(deltext);
+    td5.appendChild(form);
+    tr1.appendChild(td5);
+
+    //edit
+    let td6 = document.createElement("td");
+    let form2 = document.createElement("form");
+    form2.setAttribute("method", "POST");
+    form2.setAttribute("action", "/users/toDos/:todo");
+
+    let input1 = document.createElement("input");
+    input1.setAttribute("value", todo.title);
+    input1.setAttribute("name", "slet");
+    input1.setAttribute("type", "hidden");
+
+    let editBtn = document.createElement("button");
+    let edit = document.createTextNode("Edit");
+    editBtn.setAttribute("class", "edit");
+    form2.appendChild(input1);
+    form2.appendChild(editBtn);
+    editBtn.appendChild(edit);
+    td6.appendChild(form2);
+    tr1.appendChild(td6);
+
+    //done
+    let td7 = document.createElement("td");
+    let form3 = document.createElement("form");
+    form3.setAttribute("method", "POST");
+    form3.setAttribute("action", "/users/toDos/:todo");
+
+    let input2 = document.createElement("input");
+    input2.setAttribute("value", todo.title);
+    input2.setAttribute("name", "slet");
+    input2.setAttribute("type", "hidden");
+
+    let doneBtn = document.createElement("button");
+    let done = document.createTextNode("Done");
+    doneBtn.setAttribute("class", "edit");
+    form3.appendChild(input2);
+    form3.appendChild(doneBtn);
+    doneBtn.appendChild(done);
+    td7.appendChild(form3);
+    tr1.appendChild(td7);
+
     tabel.appendChild(tr1);
   });
 
