@@ -16,6 +16,11 @@ const toDosSchema = mongoose.Schema({
     deadline: {
         type: Date,
         required: true
+    },
+    isdone: {
+        type: Boolean,
+        format: hidden,
+        default: false
     }
 });
 
