@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const userHandler = require('../models/handleUsers');
 const toDoHandler = require('../models/handleToDos');
+const modUser = require('../models/handleUsers');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -82,6 +83,11 @@ router.get('/admin', async function(req, res) {
 router.get('/admin/:user', async function(req, res) {
     let user = await userHandler.getUsers({}, { sort: { name: 1 } });
     res.json(user);
+});
+// Admin Delete
+router.post('/admin/:user', async function(req, res, next) {
+    let delUser = await modUser.deleteUser({ userID: req.body.slet });
+    res.render('admin', { title: 'Admin Panel', message: 'User Succesfully Deleted', who: req.session.slet, delUser });
 });
 
 module.exports = router;

@@ -30,9 +30,11 @@ exports.upsertUser = async function(req) {
     }
 };
 
-exports.deleteUser = async function(name) {
+exports.deleteUser = async function(user) {
     try {
-        let cs = await mon.remove(dbServer, dbname, User, name);
+        let cs = await mon.remove(dbServer, dbname, User, user);
+        console.log(cs);
+        console.log(user);
         return cs;
     } catch (e) {
         console.log(e);
