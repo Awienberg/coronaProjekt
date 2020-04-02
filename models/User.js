@@ -24,7 +24,8 @@ const userSchema = mongoose.Schema({
         default: Date.now
     },
     isApproved: {
-        boolean: false
+        type: Boolean,
+        default: false
     }
 });
 
