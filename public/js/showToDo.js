@@ -1,136 +1,151 @@
-"use strict";
-import { $ } from "./modules/nQuery.js";
-import { Ajax } from "./modules/Ajax.js";
+'use strict';
+import { $ } from './modules/nQuery.js';
+import { Ajax } from './modules/Ajax.js';
 
 const getToDos = function(ev) {
-  //continents
-  let req = Object.create(Ajax);
-  req.init();
-  req.getFile("/users/toDos/:todo", showToDo);
+    //continents
+    let req = Object.create(Ajax);
+    req.init();
+    req.getFile('/users/toDos/:todo', showToDo);
 };
 //Show users
 const showToDo = function(e) {
-  console.log(e.target.getResponseHeader("Content-Type"));
-  let element = $("addTask");
-  while (element.firstChild) {
-    element.removeChild(element.firstChild);
-  }
-  let todos = JSON.parse(e.target.responseText);
-  let tabel = document.createElement("table");
-  let tr = document.createElement("tr");
-  let th = document.createElement("th");
-  let p = document.createTextNode("Title");
-  th.appendChild(p);
-  tr.appendChild(th);
+    console.log(e.target.getResponseHeader('Content-Type'));
+    let element = $('addTask');
+    while (element.firstChild) {
+        element.removeChild(element.firstChild);
+    }
+    let todos = JSON.parse(e.target.responseText);
+    let tabel = document.createElement('table');
+    let tr = document.createElement('tr');
+    let th = document.createElement('th');
+    let p = document.createTextNode('Title');
+    th.appendChild(p);
+    tr.appendChild(th);
 
-  let th1 = document.createElement("th");
-  let p1 = document.createTextNode("todo");
-  th1.appendChild(p1);
-  tr.appendChild(th1);
+    let th1 = document.createElement('th');
+    let p1 = document.createTextNode('todo');
+    th1.appendChild(p1);
+    tr.appendChild(th1);
 
-  let th2 = document.createElement("th");
-  let p2 = document.createTextNode("Created");
-  th2.appendChild(p2);
-  tr.appendChild(th2);
+    let th2 = document.createElement('th');
+    let p2 = document.createTextNode('Created');
+    th2.appendChild(p2);
+    tr.appendChild(th2);
 
-  let th3 = document.createElement("th");
-  let p3 = document.createTextNode("Deadline");
-  th3.appendChild(p3);
-  tr.appendChild(th3);
+    let th3 = document.createElement('th');
+    let p3 = document.createTextNode('Deadline');
+    th3.appendChild(p3);
+    tr.appendChild(th3);
 
-  tabel.appendChild(tr);
+    let th4 = document.createElement('th');
+    let p4 = document.createTextNode('Delete');
+    th4.appendChild(p4);
+    tr.appendChild(th4);
 
-  todos.forEach(function(todo) {
-    let tr1 = document.createElement("tr");
+    let th5 = document.createElement('th');
+    let p5 = document.createTextNode('Edit');
+    th5.appendChild(p5);
+    tr.appendChild(th5);
 
-    let td1 = document.createElement("td");
-    let id = document.createTextNode(todo.title);
-    td1.appendChild(id);
-    tr1.appendChild(td1);
+    let th6 = document.createElement('th');
+    let p6 = document.createTextNode('Done');
+    th6.appendChild(p6);
+    tr.appendChild(th6);
 
-    let td2 = document.createElement("td");
-    let td = document.createTextNode(todo.todo);
-    td2.appendChild(td);
-    tr1.appendChild(td2);
+    tabel.appendChild(tr);
 
-    let td3 = document.createElement("td");
-    let cr = document.createTextNode(todo.created);
-    td3.appendChild(cr);
-    tr1.appendChild(td3);
+    todos.forEach(function(todo) {
+        let tr1 = document.createElement('tr');
 
-    let td4 = document.createElement("td");
-    let deadline = document.createTextNode(todo.deadline);
-    td4.appendChild(deadline);
-    tr1.appendChild(td4);
+        let td1 = document.createElement('td');
+        let id = document.createTextNode(todo.title);
+        td1.appendChild(id);
+        tr1.appendChild(td1);
 
-    //delete
-    let td5 = document.createElement("td");
-    let form = document.createElement("form");
-    form.setAttribute("method", "POST");
-    form.setAttribute("action", "/users/toDos/:todo");
+        let td2 = document.createElement('td');
+        let td = document.createTextNode(todo.todo);
+        td2.appendChild(td);
+        tr1.appendChild(td2);
 
-    let input = document.createElement("input");
-    input.setAttribute("value", todo.title);
-    input.setAttribute("name", "slet");
-    input.setAttribute("type", "hidden");
+        let td3 = document.createElement('td');
+        let cr = document.createTextNode(todo.created);
+        td3.appendChild(cr);
+        tr1.appendChild(td3);
 
-    let delB = document.createElement("button");
-    let deltext = document.createTextNode("Delete");
-    delB.setAttribute("class", "del");
-    form.appendChild(input);
-    form.appendChild(delB);
-    delB.appendChild(deltext);
-    td5.appendChild(form);
-    tr1.appendChild(td5);
+        let td4 = document.createElement('td');
+        let deadline = document.createTextNode(todo.deadline);
+        td4.appendChild(deadline);
+        tr1.appendChild(td4);
 
-    //edit
-    let td6 = document.createElement("td");
-    let form2 = document.createElement("form");
-    form2.setAttribute("method", "POST");
-    form2.setAttribute("action", "/users/toDos/:todo");
+        //delete
+        let td5 = document.createElement('td');
+        let form = document.createElement('form');
+        form.setAttribute('method', 'POST');
+        form.setAttribute('action', '/users/toDos/:todo');
 
-    let input1 = document.createElement("input");
-    input1.setAttribute("value", todo.title);
-    input1.setAttribute("name", "slet");
-    input1.setAttribute("type", "hidden");
+        let input = document.createElement('input');
+        input.setAttribute('value', todo.title);
+        input.setAttribute('name', 'slet');
+        input.setAttribute('type', 'hidden');
 
-    let editBtn = document.createElement("button");
-    let edit = document.createTextNode("Edit");
-    editBtn.setAttribute("class", "edit");
-    form2.appendChild(input1);
-    form2.appendChild(editBtn);
-    editBtn.appendChild(edit);
-    td6.appendChild(form2);
-    tr1.appendChild(td6);
+        let delB = document.createElement('button');
+        // let deltext = document.createTextNode('Delete');
+        delB.setAttribute('class', 'fa fa-user-times');
+        form.appendChild(input);
+        form.appendChild(delB);
+        // delB.appendChild(deltext);
+        td5.appendChild(form);
+        tr1.appendChild(td5);
 
-    //done
-    let td7 = document.createElement("td");
-    let form3 = document.createElement("form");
-    form3.setAttribute("method", "POST");
-    form3.setAttribute("action", "/users/toDos/:todo");
+        //edit
+        let td6 = document.createElement('td');
+        let form2 = document.createElement('form');
+        form2.setAttribute('method', 'POST');
+        form2.setAttribute('action', '/users/toDos/:todo');
 
-    let input2 = document.createElement("input");
-    input2.setAttribute("value", todo.title);
-    input2.setAttribute("name", "slet");
-    input2.setAttribute("type", "hidden");
+        let input1 = document.createElement('input');
+        input1.setAttribute('value', todo.title);
+        input1.setAttribute('name', 'slet');
+        input1.setAttribute('type', 'hidden');
 
-    let doneBtn = document.createElement("button");
-    let done = document.createTextNode("Done");
-    doneBtn.setAttribute("class", "edit");
-    form3.appendChild(input2);
-    form3.appendChild(doneBtn);
-    doneBtn.appendChild(done);
-    td7.appendChild(form3);
-    tr1.appendChild(td7);
+        let editBtn = document.createElement('button');
+        // let edit = document.createTextNode('Edit');
+        editBtn.setAttribute('class', 'fa fa-user-edit');
+        form2.appendChild(input1);
+        form2.appendChild(editBtn);
+        // editBtn.appendChild(edit);
+        td6.appendChild(form2);
+        tr1.appendChild(td6);
 
-    tabel.appendChild(tr1);
-  });
+        //done
+        let td7 = document.createElement('td');
+        let form3 = document.createElement('form');
+        form3.setAttribute('method', 'POST');
+        form3.setAttribute('action', '/users/toDos/:todo');
 
-  $("addTask").appendChild(tabel);
+        let input2 = document.createElement('input');
+        input2.setAttribute('value', todo.title);
+        input2.setAttribute('name', 'slet');
+        input2.setAttribute('type', 'hidden');
+
+        let doneBtn = document.createElement('button');
+        // let done = document.createTextNode('Done');
+        doneBtn.setAttribute('class', 'fa fa-user-check');
+        form3.appendChild(input2);
+        form3.appendChild(doneBtn);
+        // doneBtn.appendChild(done);
+        td7.appendChild(form3);
+        tr1.appendChild(td7);
+
+        tabel.appendChild(tr1);
+    });
+
+    $('addTask').appendChild(tabel);
 };
 
 function showstarter() {
-  getToDos();
+    getToDos();
 }
 
-window.addEventListener("load", showstarter);
+window.addEventListener('load', showstarter);

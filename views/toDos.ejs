@@ -1,36 +1,37 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <%- include('includes/todoscript'); -%>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-  </head>
-  <body>
-    <%- include('includes/loggedin'); -%>
+    <head>
+        <title><%= title %></title>
+        <%- include('includes/todoscript'); -%>
+        <link rel="stylesheet" href="/stylesheets/style.css" />
+        <%- include('includes/fontawesome'); -%>
+    </head>
+    <body>
+        <%- include('includes/loggedin'); -%>
 
-    <main>
-      <div class="userpanel">
-        <a href="userpanel">Userpanel</a>
-        <a href="/">Logout</a>
-      </div>
+        <main>
+            <div class="userpanel">
+                <a href="userpanel">Userpanel</a>
+                <a href="/">Logout</a>
+            </div>
 
-      <h2>Create Todo</h2>
-      <div class="wrapperCreate">
-        <form id="createTodo" action="/users/toDos/" method="POST">
-          <label>Title:</label>
-          <input type="text" name="title" />
-          <label>Todo:</label>
-          <textarea type="text" name="todo" rows="4" cols="50"></textarea>
-          <label>Created:</label>
-          <input type="date" name="created" />
-          <label>Deadline:</label>
-          <input type="date" name="deadline" />
-          <input type="submit" value="Add your Todo" />
-        </form>
-      </div>
+            <h2>Create Todo</h2>
+            <div class="wrapperCreate">
+                <form id="createTodo" action="/users/toDos/" method="POST">
+                    <label>Title:</label>
+                    <input type="text" name="title" />
+                    <label>Todo:</label>
+                    <textarea type="text" name="todo" rows="4" cols="50"></textarea>
+                    <label>Created:</label>
+                    <input type="date" name="created" />
+                    <label>Deadline:</label>
+                    <input type="date" name="deadline" />
+                    <input type="submit" value="Add your Todo" />
+                </form>
+            </div>
 
-        <h2>Added Todo</h2>
-        <div id="addTask"></div>
-    </main>
-  </body>
+            <h2>Added Todo</h2>
+            <div id="addTask"></div>
+        </main>
+    </body>
 </html>

@@ -65,10 +65,10 @@ const showUsers = function(e) {
 
         let td4 = document.createElement('td');
         let btn = document.createElement('button');
-        btn.setAttribute('class', 'btn');
-        let edit = document.createTextNode('Edit');
+        btn.setAttribute('class', 'fa fa-user-edit');
+        // let edit = document.createTextNode('Edit');
         td4.appendChild(btn);
-        btn.appendChild(edit);
+        // btn.appendChild(edit);
         tr1.appendChild(td4);
 
         let td5 = document.createElement('td');
@@ -82,12 +82,12 @@ const showUsers = function(e) {
         input.setAttribute('type', 'hidden');
 
         let delB = document.createElement('button');
-        let deltext = document.createTextNode('Delete');
-        delB.setAttribute('class', 'del');
+        // let deltext = document.createTextNode(' Delete');
+        delB.setAttribute('class', 'fa fa-user-times');
 
         form.appendChild(input);
         form.appendChild(delB);
-        delB.appendChild(deltext);
+        // delB.appendChild(deltext);
         td5.appendChild(form);
         tr1.appendChild(td5);
         tabel.appendChild(tr1);
