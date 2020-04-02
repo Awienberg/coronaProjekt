@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const userSchema = mongoose.Schema({
     firstName: {
@@ -22,19 +22,22 @@ const userSchema = mongoose.Schema({
     created: {
         type: Date,
         default: Date.now
+    },
+    isApproved: {
+        boolean: false
     }
 });
 
-userSchema.methods.getFullName = function () {
+userSchema.methods.getFullName = function() {
     return `Name: ${this.firstName} ${this.lastName}`;
-}
+};
 
-userSchema.methods.getInfo = function () {
+userSchema.methods.getInfo = function() {
     return `${this.getFullName()}, userID: ${this.userID}, Zipcode: ${this.zipcode}`;
-}
+};
 
-userSchema.methods.getCredentials = function () {
+userSchema.methods.getCredentials = function() {
     return `${this.userID}\t${this.password}`;
-}
+};
 
-module.exports = mongoose.model("User", userSchema, 'user');
+module.exports = mongoose.model('User', userSchema, 'user');
