@@ -39,7 +39,7 @@ const showUsers = function(e) {
     tr.appendChild(th3);
 
     let th4 = document.createElement('th');
-    let p4 = document.createTextNode('delete');
+    let p4 = document.createTextNode('Delete');
     th4.appendChild(p4);
     tr.appendChild(th4);
 
