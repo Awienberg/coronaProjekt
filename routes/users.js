@@ -87,6 +87,18 @@ router.get("/admin/:user", async function(req, res) {
   let user = await userHandler.getUsers({}, { sort: { name: 1 } });
   res.json(user);
 });
+
+// Admin Approve
+router.post("/admin/:isApproved", async function(req, res, next) {
+  let isApproved = await modUser.approveUser({ userID: req.body.approve });
+  res.render("admin", {
+    title: "Admin Panel",
+    message: "User Succesfully Approved/Unapproved",
+    who: req.session.approve,
+    isApproved
+  });
+});
+
 // Admin Delete
 router.post("/admin/:user", async function(req, res, next) {
   let delUser = await modUser.deleteUser({ userID: req.body.slet });

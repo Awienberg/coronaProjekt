@@ -66,7 +66,7 @@ const showUsers = function(e) {
         let td5 = document.createElement('td');
         let form = document.createElement('form');
         form.setAttribute('method', 'POST');
-        form.setAttribute('action', '/users/admin/:user');
+        form.setAttribute('action', '/users/admin/:isApproved');
 
         let input1 = document.createElement('input');
         input1.setAttribute('value', user.isApproved);
