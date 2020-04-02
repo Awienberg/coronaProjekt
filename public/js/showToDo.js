@@ -59,7 +59,7 @@ const showToDo = function(e) {
     tr1.appendChild(td3);
 
     let td4 = document.createElement("td");
-    let deadline = document.createElement(todo.deadline);
+    let deadline = document.createTextNode(todo.deadline);
     td4.appendChild(deadline);
     tr1.appendChild(td4);
     tabel.appendChild(tr1);

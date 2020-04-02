@@ -83,7 +83,6 @@ router.get("/admin", async function(req, res) {
     who: req.session.user // using session var(s)
   });
 });
-
 router.get("/admin/:user", async function(req, res) {
   let user = await userHandler.getUsers({}, { sort: { name: 1 } });
   res.json(user);

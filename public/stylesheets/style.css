@@ -130,7 +130,7 @@ label {
     margin-right: 15px;
     margin-bottom: 5px;
 }
-input {
+input, textarea {
     /* Other styling... */
     text-align: left;
     float: right;

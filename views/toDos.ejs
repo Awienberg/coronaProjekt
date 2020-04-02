@@ -14,11 +14,11 @@
       </div>
       <h2>Create Todo</h2>
       <div class="wrapperCreate">
-        <form id="createTodo" action="/users/toDos" method="POST">
+        <form id="createTodo" action="/users/toDos/" method="POST">
           <label>Title:</label>
           <input type="text" name="title" />
           <label>Todo:</label>
-          <input type="text" name="todo" />
+          <textarea type="text" name="todo"></textarea>
           <label>Created:</label>
           <input type="date" name="created" />
           <label>Deadline:</label>
@@ -27,10 +27,8 @@
         </form>
       </div>
 
-      <div class="wrapperCreate">
         <h2>Added Todo</h2>
-        <div class="addTask"></div>
-      </div>
+        <div id="addTask"></div>
     </main>
   </body>
 </html>
