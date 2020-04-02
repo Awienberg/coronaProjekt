@@ -62,10 +62,9 @@ router.get('/toDos', function(req, res) {
         title: 'Your Todos' // input data to view
     });
 });
-router.post('/toDos/:todo', async function(req, res) {
+router.post('/toDos', async function(req, res) {
     // new user post route
     let rc = await toDoHandler.upsertToDos(req); // verify credentials
-    console.log(rc);
     return res.redirect('/users/toDos');
 });
 //Admin
