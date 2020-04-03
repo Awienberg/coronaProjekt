@@ -61,13 +61,14 @@ $("updateCreate").appendChild(createTodo);
 
 };
 //Show users
+var todos;
 const showToDo = function(e) {
   console.log(e.target.getResponseHeader("Content-Type"));
   let element = $("addTask");
   while (element.firstChild) {
     element.removeChild(element.firstChild);
   }
-  let todos = JSON.parse(e.target.responseText);
+  todos = JSON.parse(e.target.responseText);
   let tabel = document.createElement("table");
   let tr = document.createElement("tr");
   let th = document.createElement("th");
@@ -107,7 +108,7 @@ const showToDo = function(e) {
 
   tabel.appendChild(tr);
 
-  todos.forEach(function(todo) {
+  todos.forEach(function(todo, i) {
     let tr1 = document.createElement("tr");
 
     let td1 = document.createElement("td");
@@ -152,24 +153,16 @@ const showToDo = function(e) {
 
     //edit
     let td6 = document.createElement("td");
-    let form2 = document.createElement("form");
-    form2.setAttribute("method", "POST");
-    form2.setAttribute("action", "/users/toDos/");
-
-    let input1 = document.createElement("input");
-    input1.setAttribute("value", todo.title);
-    input1.setAttribute("name", "edit");
-    input1.setAttribute("type", "hidden");
 
     let editBtn = document.createElement("button");
-    editBtn.setAttribute("id", "editValue");
+    editBtn.setAttribute("id", "a_"+i);
     // let edit = document.createTextNode('Edit');
     editBtn.setAttribute("class", "fa fa-user-edit");
-    form2.appendChild(input1);
-    form2.appendChild(editBtn);
+    editBtn.addEventListener("click", getValuesToForm);
     // editBtn.appendChild(edit);
-    td6.appendChild(form2);
+    td6.appendChild(editBtn);
     tr1.appendChild(td6);
+
 
     //done
     let td7 = document.createElement("td");
@@ -206,10 +199,19 @@ window.addEventListener("load", showstarter);
 
 
 
-function getValuesToForm() {
+function getValuesToForm(e) {
+  let j = e.target.id;
+  console.log(j);
+  j = j.substr(2);
+  console.log(j);
   let updateValue = $("title");
+  todo = todos[j];
   updateValue.setAttribute("value", todo.title);
+  updateValue = $("todo");
+  todo = todos[j];
+  $("todo").innerHTML = todo.todo;
+  updateValue = $("deadline");
+  todo = todos[j];
+  updateValue.setAttribute("value", todo.deadline);
   console.log(updateValue);
 };
-
-$("editValue").addEventListener("click", getValuesToForm);
