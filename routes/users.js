@@ -102,8 +102,8 @@ router.post('/admin/isApproved', async function(req, res, next) {
     let isApproved = await modUser.approveUser(req);
     res.render('admin', {
         title: 'Admin Panel',
-        message: 'User Succesfully Approved/Unapproved',
-        who: req.session.approve,
+        message: 'User Succesfully Approved/Unapproved:',
+        who: req.body.userID,
         isApproved
     });
 });
@@ -113,8 +113,8 @@ router.post('/admin/user', async function(req, res, next) {
     let delUser = await modUser.deleteUser({ userID: req.body.slet });
     res.render('admin', {
         title: 'Admin Panel',
-        message: 'User Succesfully Deleted',
-        who: req.session.slet,
+        message: 'User Succesfully Deleted:',
+        who: req.body.slet,
         delUser
     });
 });
