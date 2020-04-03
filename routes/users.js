@@ -72,13 +72,15 @@ router.get("/toDos/:todo", async function(req, res) {
   let todos = await toDoHandler.getToDos({}, { sort: { name: 1 } });
   res.json(todos);
 });
-
-// change
-router.post("/toDos", async function(req, res, next) {
-  let changeToDo = await toDoHandler.changeToDos({ userID: req.body.edit });
-  res.render(changeToDo);
+router.post("/toDos/todo", async function(req, res, next) {
+  let delTodo = await toDoHandler.deleteToDos({ title: req.body.delete });
+  res.render("toDos", {
+    title: "Your Todos",
+    message: "Todo Succesfully Deleted",
+    who: req.session.slet,
+    delTodo
+  });
 });
-
 //Admin
 router.get("/admin", async function(req, res) {
   // display register route

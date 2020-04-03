@@ -82,11 +82,11 @@ const showToDo = function(e) {
     let td5 = document.createElement("td");
     let form = document.createElement("form");
     form.setAttribute("method", "POST");
-    form.setAttribute("action", "/users/toDos/:todo");
+    form.setAttribute("action", "/users/toDos/todo");
 
     let input = document.createElement("input");
     input.setAttribute("value", todo.title);
-    input.setAttribute("name", "slet");
+    input.setAttribute("name", "delete");
     input.setAttribute("type", "hidden");
 
     let delB = document.createElement("button");
@@ -102,7 +102,7 @@ const showToDo = function(e) {
     let td6 = document.createElement("td");
     let form2 = document.createElement("form");
     form2.setAttribute("method", "POST");
-    form2.setAttribute("action", "/users/toDos/:todo");
+    form2.setAttribute("action", "/users/toDos/");
 
     let input1 = document.createElement("input");
     input1.setAttribute("value", todo.title);
@@ -122,11 +122,11 @@ const showToDo = function(e) {
     let td7 = document.createElement("td");
     let form3 = document.createElement("form");
     form3.setAttribute("method", "POST");
-    form3.setAttribute("action", "/users/toDos/:todo");
+    form3.setAttribute("action", "/users/toDos/");
 
     let input2 = document.createElement("input");
     input2.setAttribute("value", todo.title);
-    input2.setAttribute("name", "slet");
+    input2.setAttribute("name", "done");
     input2.setAttribute("type", "hidden");
 
     let doneBtn = document.createElement("button");
