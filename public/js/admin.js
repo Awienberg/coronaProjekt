@@ -81,12 +81,12 @@ const showUsers = function(e) {
         let input1 = document.createElement('input');
         input1.setAttribute('value', user.userID);
         input1.setAttribute('name', 'userID');
-        input1.setAttribute('type', 'text');
+        input1.setAttribute('type', 'hidden');
 
         let input2 = document.createElement('input');
         input2.setAttribute('value', user.isApproved);
-        input2.setAttribute('name', 'userID');
-        input2.setAttribute('type', 'text');
+        input2.setAttribute('name', 'approve');
+        input2.setAttribute('type', 'hidden');
 
         let appB = document.createElement('button');
         // let deltext = document.createTextNode(' Delete');
