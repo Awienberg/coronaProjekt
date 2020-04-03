@@ -84,7 +84,7 @@ const showUsers = function(e) {
         input1.setAttribute('type', 'hidden');
 
         let input2 = document.createElement('input');
-        input2.setAttribute('value', user.isApproved);
+        input2.setAttribute('value', user.isApproved ? false : true);
         input2.setAttribute('name', 'approve');
         input2.setAttribute('type', 'hidden');
 

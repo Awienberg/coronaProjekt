@@ -16,10 +16,10 @@ router.get('/register', function(req, res) {
         title: 'Register User' // input data to view
     });
 });
-router.post("/register", function(req, res) {
-  // new user post route
-  userHandler.upsertUser(req);
-  return res.redirect("/"); // skip the receipt, return to fp
+router.post('/register', function(req, res) {
+    // new user post route
+    userHandler.upsertUser(req);
+    return res.redirect('/'); // skip the receipt, return to fp
 });
 //Login
 router.get('/login', function(req, res) {
@@ -72,14 +72,14 @@ router.get('/toDos/:todo', async function(req, res) {
     let todos = await toDoHandler.getToDos({}, { sort: { name: 1 } });
     res.json(todos);
 });
-router.post("/toDos/todo", async function(req, res, next) {
-  let delTodo = await toDoHandler.deleteToDos({ title: req.body.delete });
-  res.render("toDos", {
-    title: "Your Todos",
-    message: "Todo Succesfully Deleted",
-    who: req.session.slet,
-    delTodo
-  });
+router.post('/toDos/todo', async function(req, res, next) {
+    let delTodo = await toDoHandler.deleteToDos({ title: req.body.delete });
+    res.render('toDos', {
+        title: 'Your Todos',
+        message: 'Todo Succesfully Deleted',
+        who: req.session.slet,
+        delTodo
+    });
 });
 //Admin
 router.get('/admin', async function(req, res) {
