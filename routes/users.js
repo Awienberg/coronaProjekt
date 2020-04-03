@@ -19,7 +19,7 @@ router.get("/register", function(req, res) {
 router.post("/register", function(req, res) {
   // new user post route
   userHandler.upsertUser(req);
-  return res.redirect("userpanel"); // skip the receipt, return to fp
+  return res.redirect("/"); // skip the receipt, return to fp
 });
 //Login
 router.get("/login", function(req, res) {
