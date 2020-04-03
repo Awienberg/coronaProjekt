@@ -59,7 +59,7 @@ exports.verifyUser = async function(req) {
     let check = { userID: req.body.userID };
     let u = await this.getUsers(check);
     let success = await bcrypt.compare(req.body.password, u[0].password);
-    if (success) {
+    if (success && isApproved) {
         req.session.authenticated = true; // set session vars
         req.session.user = u[0].userID; // set session vars
     } else {
