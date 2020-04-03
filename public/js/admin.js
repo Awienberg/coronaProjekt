@@ -34,9 +34,19 @@ const showUsers = function(e) {
     tr.appendChild(th2);
 
     let th3 = document.createElement('th');
-    let p3 = document.createTextNode('Approved');
+    let p3 = document.createTextNode('Has Access');
     th3.appendChild(p3);
     tr.appendChild(th3);
+
+    let th4 = document.createElement('th');
+    let p4 = document.createTextNode('Set Access Rights');
+    th4.appendChild(p4);
+    tr.appendChild(th4);
+
+    let th5 = document.createElement('th');
+    let p5 = document.createTextNode('Delete User');
+    th5.appendChild(p5);
+    tr.appendChild(th5);
 
     tabel.appendChild(tr);
 
@@ -66,18 +76,24 @@ const showUsers = function(e) {
         let td5 = document.createElement('td');
         let form = document.createElement('form');
         form.setAttribute('method', 'POST');
-        form.setAttribute('action', '/users/admin/:isApproved');
+        form.setAttribute('action', '/users/admin/isApproved');
 
         let input1 = document.createElement('input');
-        input1.setAttribute('value', user.isApproved);
-        input1.setAttribute('name', 'approve');
+        input1.setAttribute('value', user.userID);
+        input1.setAttribute('name', 'userID');
         input1.setAttribute('type', 'hidden');
+
+        let input2 = document.createElement('input');
+        input2.setAttribute('value', user.isApproved);
+        input2.setAttribute('name', 'approve');
+        input2.setAttribute('type', 'hidden');
 
         let appB = document.createElement('button');
         // let deltext = document.createTextNode(' Delete');
         appB.setAttribute('class', 'fa fa-user-check');
 
         form.appendChild(input1);
+        form.appendChild(input2);
         form.appendChild(appB);
         // delB.appendChild(deltext);
         td5.appendChild(form);
@@ -87,18 +103,18 @@ const showUsers = function(e) {
         let td6 = document.createElement('td');
         let form2 = document.createElement('form');
         form2.setAttribute('method', 'POST');
-        form2.setAttribute('action', '/users/admin/:user');
+        form2.setAttribute('action', '/users/admin/user');
 
-        let input2 = document.createElement('input');
-        input2.setAttribute('value', user.userID);
-        input2.setAttribute('name', 'slet');
-        input2.setAttribute('type', 'hidden');
+        let input3 = document.createElement('input');
+        input3.setAttribute('value', user.userID);
+        input3.setAttribute('name', 'slet');
+        input3.setAttribute('type', 'hidden');
 
         let delB = document.createElement('button');
         // let deltext = document.createTextNode(' Delete');
         delB.setAttribute('class', 'fa fa-user-times');
 
-        form2.appendChild(input2);
+        form2.appendChild(input3);
         form2.appendChild(delB);
         // delB.appendChild(deltext);
         td6.appendChild(form2);

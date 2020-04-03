@@ -30,9 +30,20 @@ exports.upsertUser = async function(req) {
     }
 };
 
-exports.approveUser = async function(req){
-  
-}
+exports.approveUser = async function(req) {
+    let check = { userID: req.body.userID };
+    // let check = { isApproved: false };
+    let user = new User({
+        isApproved: req.body.approve ? false : true
+    });
+    try {
+        let cs = await mon.upsert(dbServer, dbname, User, user, check);
+        console.log(cs);
+        console.log(user);
+    } catch (e) {
+        console.error(e);
+    }
+};
 
 exports.deleteUser = async function(user) {
     try {
