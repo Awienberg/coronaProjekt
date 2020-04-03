@@ -8,6 +8,58 @@ const getToDos = function(ev) {
   req.init();
   req.getFile("/users/toDos/:todo", showToDo);
 };
+
+const addToDo = function(ev) {
+
+  let createTodo = document.createElement('form');
+  createTodo.setAttribute("id", "createTodo");
+  createTodo.setAttribute("action", "/users/toDos/");
+  createTodo.setAttribute("method", "POST");
+
+  let titleLabel = document.createElement("label");
+  let title = document.createTextNode("Title");
+  let titleinput = document.createElement("input");
+  titleinput.setAttribute("id", "title");
+  titleinput.setAttribute("type", "text");
+  titleinput.setAttribute("name", "title");
+
+  let todoLabel = document.createElement("label");
+  let todo = document.createTextNode("To do");
+  let todoinput = document.createElement("textarea");
+  todoinput.setAttribute("id", "todo");
+  todoinput.setAttribute("type", "text");
+  todoinput.setAttribute("rows", "4");
+  todoinput.setAttribute("cols", "50");
+  todoinput.setAttribute("name", "todo");
+
+  let deadlineLabel = document.createElement("label");
+  let deadline = document.createTextNode("Deadline");
+  let deadlineinput = document.createElement("input");
+  deadlineinput.setAttribute("id", "deadline");
+  deadlineinput.setAttribute("type", "date");
+  deadlineinput.setAttribute("name", "deadline");
+
+  let submitinput = document.createElement("input");
+  submitinput.setAttribute("type", "submit");
+  submitinput.setAttribute("name", "submit");
+  submitinput.setAttribute("value", "Add your Todo");
+
+
+  createTodo.appendChild(titleLabel);
+  titleLabel.appendChild(title);
+  createTodo.appendChild(titleinput);
+  createTodo.appendChild(todoLabel);
+  todoLabel.appendChild(todo);
+  createTodo.appendChild(todoinput);
+  createTodo.appendChild(deadlineLabel);
+  deadlineLabel.appendChild(deadline);
+  createTodo.appendChild(deadlineinput);
+  createTodo.appendChild(submitinput);
+
+
+$("updateCreate").appendChild(createTodo);
+
+};
 //Show users
 const showToDo = function(e) {
   console.log(e.target.getResponseHeader("Content-Type"));
@@ -110,6 +162,7 @@ const showToDo = function(e) {
     input1.setAttribute("type", "hidden");
 
     let editBtn = document.createElement("button");
+    editBtn.setAttribute("id", "editValue");
     // let edit = document.createTextNode('Edit');
     editBtn.setAttribute("class", "fa fa-user-edit");
     form2.appendChild(input1);
@@ -146,13 +199,17 @@ const showToDo = function(e) {
 
 function showstarter() {
   getToDos();
-}
+  addToDo();
+};
 
 window.addEventListener("load", showstarter);
 
-$("edit").click(function() {
-  $("title").val(title);
-  $("todo").val(todo);
-  $("created").val(created);
-  $("deadline").val(deadline);
-});
+
+
+function getValuesToForm() {
+  let updateValue = $("title");
+  updateValue.setAttribute("value", todo.title);
+  console.log(updateValue);
+};
+
+$("editValue").addEventListener("click", getValuesToForm);
