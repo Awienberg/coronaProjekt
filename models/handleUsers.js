@@ -32,7 +32,6 @@ exports.upsertUser = async function(req) {
 
 exports.approveUser = async function(req) {
     let check = { userID: req.body.userID };
-    // let check = { isApproved: false };
     let user = new User({
         isApproved: req.body.approve ? false : true
     });
