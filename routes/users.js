@@ -83,11 +83,11 @@ router.post('/toDos/todo', async function(req, res, next) {
 });
 // Todo Done
 router.post('/toDos/done', async function(req, res, next) {
-    let done = await toDoHandler.doneTodo(req);
+    let done = await toDoHandler.doneTodos(req);
     res.render('toDos', {
-        title: 'Your Tods',
+        title: 'Your Todos',
         message: 'Task Set to Done',
-        who: req.body.userID,
+        who: req.body.title,
         done
     });
 });

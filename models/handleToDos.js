@@ -1,38 +1,52 @@
-"use strict";
-const mon = require("./mongooseWrap");
-const ToDos = require("./ToDos");
-const dbServer = "localhost";
-const dbname = "Todos";
+'use strict';
+const mon = require('./mongooseWrap');
+const ToDos = require('./ToDos');
+const dbServer = 'localhost';
+const dbname = 'Todos';
 
 exports.getToDos = async function(query, sort) {
-  try {
-    let cs = await mon.retrieve(dbServer, dbname, ToDos, query, sort);
-    return cs;
-  } catch (e) {
-    console.error(e);
-  }
+    try {
+        let cs = await mon.retrieve(dbServer, dbname, ToDos, query, sort);
+        return cs;
+    } catch (e) {
+        console.error(e);
+    }
 };
 
 exports.upsertToDos = async function(req) {
-  let check = { title: req.body.title };
-  let todo = new ToDos({
-    title: req.body.title,
-    todo: req.body.todo,
-    created: req.body.created,
-    deadline: req.body.deadline
-  });
-  try {
-    let cs = await mon.upsert(dbServer, dbname, ToDos, todo, check);
-  } catch (e) {
-    console.error(e);
-  }
+    let check = { title: req.body.title };
+    let todo = new ToDos({
+        title: req.body.title,
+        todo: req.body.todo,
+        created: req.body.created,
+        deadline: req.body.deadline
+    });
+    try {
+        let cs = await mon.upsert(dbServer, dbname, ToDos, todo, check);
+    } catch (e) {
+        console.error(e);
+    }
 };
 
 exports.deleteToDos = async function(name) {
-  try {
-    let cs = await mon.remove(dbServer, dbname, ToDos, name);
-    return cs;
-  } catch (e) {
-    console.log(e);
-  }
+    try {
+        let cs = await mon.remove(dbServer, dbname, ToDos, name);
+        return cs;
+    } catch (e) {
+        console.log(e);
+    }
+};
+
+exports.doneTodos = async function(req) {
+    let check = { title: req.body.title };
+    let todo = new ToDos({
+        isDone: req.body.done
+    });
+    try {
+        let cs = await mon.upsert(dbServer, dbname, ToDos, todo, check);
+        console.log(cs);
+        console.log(todo);
+    } catch (e) {
+        console.error(e);
+    }
 };

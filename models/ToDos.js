@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const toDosSchema = mongoose.Schema({
     title: {
@@ -17,10 +17,10 @@ const toDosSchema = mongoose.Schema({
         type: Date,
         required: true
     },
-    isdone: {
+    isDone: {
         type: Boolean,
         default: false
     }
 });
 
-module.exports = mongoose.model("ToDo", toDosSchema, 'todo');
+module.exports = mongoose.model('ToDo', toDosSchema, 'todo');

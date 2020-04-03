@@ -58,12 +58,12 @@ exports.deleteUser = async function(user) {
 exports.verifyUser = async function(req) {
     let check = { userID: req.body.userID };
     let u = await this.getUsers(check);
-    if(u.length < 1) {
-          req.session = undefined;
-          let success = false;
+    if (u.length < 1) {
+        req.session = undefined;
+        let success = false;
 
-          return success;
-    };
+        return success;
+    }
     let success = await bcrypt.compare(req.body.password, u[0].password);
     if (success && u[0].isApproved) {
         req.session.authenticated = true; // set session vars
