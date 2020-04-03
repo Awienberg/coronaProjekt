@@ -81,6 +81,16 @@ router.post('/toDos/todo', async function(req, res, next) {
         delTodo
     });
 });
+// Todo Done
+router.post('/toDos/done', async function(req, res, next) {
+    let done = await toDoHandler.doneTodo(req);
+    res.render('toDos', {
+        title: 'Your Tods',
+        message: 'Task Set to Done',
+        who: req.body.userID,
+        done
+    });
+});
 //Admin
 router.get('/admin', async function(req, res) {
     // display register route
